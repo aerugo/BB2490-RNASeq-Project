@@ -12,9 +12,9 @@ Keywords: Subsampling, large RNAseq, gene expression analysis
 #Introduction:#
 
 Diagnosis the problem:
-*Normal blood cells from individuals were collected and a part treated with LPS while other untreated
-*A high depth sequencing experiments performed in these LPS treated and normal sample
-*Rather few gene expression observed. Hypothetically, a high sequencing leading to inability to identify differentional status 
+* Normal blood cells from individuals were collected and a part treated with LPS while other untreated
+* A high depth sequencing experiments performed in these LPS treated and normal sample
+* Rather few gene expression observed. Hypothetically, a high sequencing leading to inability to identify differentional status 
 
 #Expectation#
 *Differential expressed and Allele specific genes should be repored using approproate methods and guidelines
