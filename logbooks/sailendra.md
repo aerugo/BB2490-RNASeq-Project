@@ -17,26 +17,26 @@ Diagnosis the problem:
 * Rather few gene expression observed. Hypothetically, a high sequencing leading to inability to identify differentional status 
 
 #Expectation#
-*Differential expressed and Allele specific genes should be repored using approproate methods and guidelines
+* Differential expressed and Allele specific genes should be repored using approproate methods and guidelines
 
 #Methods and Materials#
-*Subsampling of Reads
-*30 - 70% of data take into consideration and perform the DE and ASE. 
-*2 folds improvements --> less reads to be aligned and more more meaningful interpretstion?
+* Subsampling of Reads
+* 30 - 70% of data take into consideration and perform the DE and ASE. 
+* 2 folds improvements --> less reads to be aligned and more more meaningful interpretstion?
 
 What is subsampling and how can you make sampling such that it represents the true population?
-Selection of the sample such that it characterizes population.
+* Selection of the sample such that it characterizes population.
 
-How are previous study done in in this case? 
-Why does sampling matters ?
-How do you proceed?
-take 30%,40%,50%,60%,70% of reads and do Trimming, QC, Alignment, DE, ASE of the reads?
- 8 samples X 5 times run the pipelines?
+* How are previous study done in in this case? 
+* Why does sampling matters ?
+* How do you proceed?
+ take 30%,40%,50%,60%,70% of reads and do Trimming, QC, Alignment, DE, ASE of the reads?
+* 8 samples X 5 times run the pipelines?
  
 Pipleines:
-*Preprocessing : 
-**Step 1: Removal of adapters, low quality reads with q values less than some parameters; 
-*Tools in consideration -->Trimgalore, Cutadapt
+* Preprocessing : 
+Step 1: Removal of adapters, low quality reads with q values less than some parameters; 
+Tools in consideration -->Trimgalore, Cutadapt
 Step 2: Quality Control of the trimmed reads 
 Tools in consideration FASTQC
 
