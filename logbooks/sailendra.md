@@ -35,30 +35,31 @@ What is subsampling and how can you make sampling such that it represents the tr
  
 Pipleines:
 * Preprocessing : 
-Step 1: Removal of adapters, low quality reads with q values less than some parameters; 
-Tools in consideration -->Trimgalore, Cutadapt
-Step 2: Quality Control of the trimmed reads 
-Tools in consideration FASTQC
+* Step 1: Removal of adapters, low quality reads with q values less than some parameters; 
+* Tools in consideration -->Trimgalore, Cutadapt
+* Step 2: Quality Control of the trimmed reads 
+* Tools in consideration FASTQC
 
 Sanity check
 
 #Alignment and Mapping#
 
-Various mappers BWA, bowtie2, STAR, Tophat, But given the RNASeq data we have to consider take into consideration of spliced reads and computation time for the mapping the reads
+* Various mappers BWA, bowtie2, STAR, Tophat, 
+* But given the RNASeq data we have to consider take into consideration of spliced reads and computation time for the mapping the reads
 
-QC of the mapping 
-How good are our read maps?
-Where do they align?
-How much of the genome is covered? 
-Spliced site informations?
+* QC of the mapping 
+* How good are our read maps?
+* Where do they align?
+* How much of the genome is covered? 
+* Spliced site informations?
 
 Tools: HS metrices, Samtools 
 
-Differential gene expression analysis:
-Find the expression fold change and p value of the differential expressed genes
-Does this make sense?
-How would the subsampling effect the differential expressed genes efect?
+* Differential gene expression analysis:
+* Find the expression fold change and p value of the differential expressed genes
+* Does this make sense?
+* How would the subsampling effect the differential expressed genes efect?
 
 Allele specific expression 
-What is allele specific expression?
-Allele specific expression is the difference in the paternal and maternal haplotype from an individual. ## Very very intersting  
+* What is allele specific expression?
+* Allele specific expression is the difference in the paternal and maternal haplotype from an individual. ## Very very intersting  
