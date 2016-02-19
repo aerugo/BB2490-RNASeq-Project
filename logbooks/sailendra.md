@@ -63,3 +63,9 @@ Tools: HS metrices, Samtools
 Allele specific expression 
 * What is allele specific expression?
 * Allele specific expression is the difference in the paternal and maternal haplotype from an individual. ## Very very intersting  
+
+## Day- 3
+3 sample of each sucg that there are 6 replicates
+2 group for Differential expression
+While for the other  six samples are used
+
