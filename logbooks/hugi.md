@@ -7,5 +7,6 @@ We settled on GitHub both for hosting code and logbooks. Since the rest of the g
 ### February 17th 2016
 Meeting with Olof. We will restrict to 3 individuals.
 Need to remove adapters, check quality, discarding stuff...
-Random sampling, a fraction of each sample.
+Random sampling, a fraction of each sample. Sub sampling will be done after processing but before mapping.
+Each sample is on 8 different lanes.
 Random sampling with same seed on each?
