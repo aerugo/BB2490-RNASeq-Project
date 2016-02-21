@@ -1,7 +1,7 @@
 ##Day -1##
 Log book
 
-##Day 2:##
+##Day 2: Feb 18 2016 ##
 
 #Project Title and intial feel of the project#
 
@@ -64,8 +64,23 @@ Allele specific expression
 * What is allele specific expression?
 * Allele specific expression is the difference in the paternal and maternal haplotype from an individual. ## Very very intersting  
 
-## Day- 3
-3 sample of each sucg that there are 6 replicates
-2 group for Differential expression
-While for the other  six samples are used
+## Day- 3: Feb 19 2016##
+We further more discussed the project in detail with teacher regarding basic ideas and motive of project. Intailly, I felt the project is vague in sense that my major concern is as we sequence more the better would be results be. However, due to increased sequencing, it kinda of obsucures the major signal. Thus a subsampling technique, which would in principle implicate similar properties as population will provide better signal to noise ratio. This would in turn lead to better identification of gene expression and allele specific expression. 
+
+Furthermore, I was confused about allele specific expressions. Through discussion in my own words, allele specific expression can be described as expression of paternal and maternal allele in an inddividual. Basically, an individual would have two set of chromosome; each arising from father and mother and in genral case a haloptype would be build based on the above information. However, I have to figure out how could paternal and maternal side of expression would be determined from RNA-seq data.
+
+## Genaral experimental design from RNAseq:
+* 3 sample of each such that there are 6 replicates
+* 2 group for Differential expression
+* 6 individual sample with allele specific expression.
+
+## Day 3 and 4 : 20/21 Feb 2016##
+
+# Literature review and brief summary of each papers#
+
+[Effects of subsampling on characteristics of RNA-seq data from triple-negative breast cancer patients](http://cjcjournal.biomedcentral.com/articles/10.1186/s40880-015-0040-8)
+
+
+
+
 
