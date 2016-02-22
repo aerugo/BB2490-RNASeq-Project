@@ -95,8 +95,20 @@ Systematically, bootstapping using *f* fraction of read data from whole dataset.
 
 Talked about GeneiAse method for the detection of allele specific expression from RNAseq data from LPS treated and untreated normal blood cells. 
 
+# Day 5 Getting hands on data #
 
+As the teacher had set data, I first wanted to get inhand with RNA seq data. My aim was to understand the reads count in each of sample. Basically, the data consists of three RNA sequenced samples- The samples were numbered as 10, 11 and 12 and consists of normal lympohodial cell treated with LPS and without LPS. Thus consisting of six samples in total. Furthermore, the data consists of each 2 flowcells thus consisting of 8 lanes: 4 lanes of each treated and 4 lanes without LPS treated. My first task was to observe the read counts in each sample. For this, I first made a noback files in proj g2015056. 
 
+```shell
+mkdir /proj/g2015056/nobackup/Subsampling
+```
+And using unix command as below count the individiual reads in each fastq files
+
+```shell
+ zgrep -c '^@' Sample_SN_11_UNST/S* > /proj/g2015056/nobackup/Subsample/130104_SN866_0198_BC1DAYACXX/RC_SN11_UNST
+```
+
+Here we see quite a drastic range of sequence reads in each of files. For example in flowcell "130104_SN866_0197_AC1DLVACXX" Sample10 LPS range 1 was ranged from 16.95M to 21.20M range while in other flowcell it ranged from 17.38M to 21.06M. We plotted a barplot of reads from 2 flow cells as shown in fgiure (dont know how to post figure in here)
 
 
 
