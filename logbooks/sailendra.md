@@ -76,7 +76,7 @@ Furthermore, I was confused about allele specific expressions. Through discussio
 
 # Day 3 and 4 : 20/21 Feb 2016##
 
-##Literature review and brief summary of each papers#
+##Literature review and brief summary of each papers##
 
 [Effects of subsampling on characteristics of RNA-seq data from triple-negative breast cancer patients][1] (http://cjcjournal.biomedcentral.com/articles/10.1186/s40880-015-0040-8)
 
@@ -90,6 +90,16 @@ Triple negative breast cancer cells (TNBC) and triple negative breast cancer fre
 
 ###Basic principle of DESIRE ###
 Systematically, bootstapping using *f* fraction of read data from whole dataset. Here, the data are drawn without replacement.For each sample a fraction ranging from 10%-90% of reads are drawn without replacement to give R replicates. R=24 taken on the basis of number of nodes in cluster. However, it seems it is kinda of optimal value.
+
+[GeneiASE: Detection of condition-dependent and static allele-specific expression from RNA-seq data without haplotype information][2] (http://www.nature.com/articles/srep21134)
+
+Talked about GeneiAse method for the detection of allele specific expression from RNAseq data from LPS treated and untreated normal blood cells. 
+
+
+
+
+
+
 
 
 
