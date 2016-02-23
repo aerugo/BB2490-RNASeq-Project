@@ -1,4 +1,4 @@
-##Day -1##
+#Day -1#
 Log book
 
 #Day 2: Feb 18 2016 ##
@@ -95,7 +95,7 @@ Systematically, bootstapping using *f* fraction of read data from whole dataset.
 
 Talked about GeneiAse method for the detection of allele specific expression from RNAseq data from LPS treated and untreated normal blood cells. 
 
-# Day 5 Getting hands on data #
+# Day 5: Getting hands on data #
 
 As the teacher had set data, I first wanted to get inhand with RNA seq data. My aim was to understand the reads count in each of sample. Basically, the data consists of three RNA sequenced samples- The samples were numbered as 10, 11 and 12 and consists of normal lympohodial cell treated with LPS and without LPS. Thus consisting of six samples in total. Furthermore, the data consists of each 2 flowcells thus consisting of 8 lanes: 4 lanes of each treated and 4 lanes without LPS treated. My first task was to observe the read counts in each sample. For this, I first made a noback files in proj g2015056. 
 
@@ -108,7 +108,28 @@ And using unix command as below count the individiual reads in each fastq files
  zgrep -c '^@' Sample_SN_11_UNST/S* > /proj/g2015056/nobackup/Subsample/130104_SN866_0198_BC1DAYACXX/RC_SN11_UNST
 ```
 
-Here we see quite a drastic range of sequence reads in each of files. For example in flowcell "130104_SN866_0197_AC1DLVACXX" Sample10 LPS range 1 was ranged from 16.95M to 21.20M range while in other flowcell it ranged from 17.38M to 21.06M. We plotted a barplot of reads from 2 flow cells as shown in fgiure (dont know how to post figure in here)
+Here we see quite a drastic range of sequence reads in each of files. For example in flowcell "130104_SN866_0197_AC1DLVACXX" Sample10 LPS range 1 was ranged from 16.95M to 21.20M range while in other flowcell it ranged from 17.38M to 21.06M. We plotted a barplot of reads from 2 flow cells as shown in figure (dont know how to post figure in here)
+
+# Day 6: Working together and hands on sbatch script with Hugio#
+
+As planned I and Hugio met at KTH to get hands on data analysis and substantiate pipelines for further analysis. Firstly, we decided to used step-wise increment of data. Specifically we decided first we will try with a single lane reads so as to optimize tools and sbatch script and subsequently scale it up with serially with two, three and four lanes of each flowcells thus constituting 25%, 50%, 75% and 100% of total reads. The main rationale behind it was this would be in principle similar to subsampling whole population of paired ends reads from whole RNA sequencing albeit in small chunks.
+
+## Developing pipelines for analysis ##
+
+In my opinion major task in sequencing is composed of three major parts :
+* Preprocessing of reads
+* Alignment and Mapping of reads
+* Answering biological questions from mapped reads
+
+Thus, in each step we have to rigorously determine tool's advantages and shortcomings . At first we started tentatively with listing (for preprocessing used) tools for analysis of RNA seq data.
+
+* Preprocessing of read data
+
+Tools in consideration : [TrimGalore] (http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/trim_galore_User_Guide_v0.3.7.pdf), [FastQC] (https://wiki.hpcc.msu.edu/display/Bioinfo/FastQC+Tutorial), [Trimmomatic] (http://bioinformatics.oxfordjournals.org/content/30/15/2114.full.pdf+html)
+
+
+
+
 
 
 
