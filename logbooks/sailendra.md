@@ -110,11 +110,11 @@ And using unix command as below count the individiual reads in each fastq files
 
 Here we see quite a drastic range of sequence reads in each of files. For example in flowcell "130104_SN866_0197_AC1DLVACXX" Sample10 LPS range 1 was ranged from 16.95M to 21.20M range while in other flowcell it ranged from 17.38M to 21.06M. We plotted a barplot of reads from 2 flow cells as shown in figure (dont know how to post figure in here)
 
-# Day 6: Working together and hands on sbatch script with Hugio#
+# Day 6: Working together and hands on sbatch script with Hugio 23 Feb 2016#
 
 As planned I and Hugio met at KTH to get hands on data analysis and substantiate pipelines for further analysis. Firstly, we decided to used step-wise increment of data. Specifically we decided first we will try with a single lane reads so as to optimize tools and sbatch script and subsequently scale it up with serially with two, three and four lanes of each flowcells thus constituting 25%, 50%, 75% and 100% of total reads. The main rationale behind it was this would be in principle similar to subsampling whole population of paired ends reads from whole RNA sequencing albeit in small chunks.
 
-## Developing pipelines for analysis 23 Feb 2016##
+## Developing pipelines for analysis ##
 
 In my opinion major task in sequencing is composed of three major parts :
 * Preprocessing of reads
@@ -129,10 +129,7 @@ Tools in consideration : [TrimGalore] (http://www.bioinformatics.babraham.ac.uk/
 
 Given sequencing technologies inherienty invokes upon sequencing error such as low quality reads, adapter contaminations , it is imperative to preprocess paired end reads for minimizing erros/bias in mapping and downstreaming analyis. With few quick google searches, we saw that there were couple of preprocessing tools made. However, we figured out that the trimming process should work with paired end reads and flexible enough to work multisamples in parallel. Thus, we thought to give a try to TrimGalore. TrimGalore as wrapper around Cutadapt and FastQC to consistently apply quality and adapter trimming to FastQ files. Through simple perusual in manual we figured out it is easy to use. Howevver, intially we first determined quality of single lane paired end reads [SN10_UNST_ATCACG_L001_R2](https://github.com/aerugo/BB2490-RNASeq-Project/wiki/Collaborative-notes) using a [fastqc script](https://github.com/aerugo/BB2490-RNASeq-Project/blob/master/src/fastqc.sh). From fastq result we saw that there were some contamination from adapters. And additionally, the quality of the reads geneally got down at 3' end ([results here]) (https://github.com/aerugo/BB2490-RNASeq-Project/tree/master/results/2016-02-23/fastq_results_raw_SN10_UNST_ATCACG_L001_R2). Thus we proceed to use trimgalore to remove low quality reads. TrimGalore can take on parameters such as read quality scores, adapter sequences, minimum number of match between adapeters and reads . A [sbatch script for Trimgalore] (https://github.com/aerugo/BB2490-RNASeq-Project/blob/master/src/trimming.sh) is provided herein.
 
-
-
-* Alignment and Mapping of Reads
- Tools in consideration [BWA] (http://arxiv.org/pdf/1303.3997v2.pdf), [bowtie 2](http://dx.doi.org/10.1038/nmeth.1923), [STAR] (http://bioinformatics.oxfordjournals.org/content/early/2012/10/25/bioinformatics.bts635.full.pdf+html), [TopHat 2](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4053844/pdf/gb-2013-14-4-r36.pdf)
+* Alignment and Mapping of Reads: Tools in consideration [BWA] (http://arxiv.org/pdf/1303.3997v2.pdf), [bowtie 2](http://dx.doi.org/10.1038/nmeth.1923), [STAR] (http://bioinformatics.oxfordjournals.org/content/early/2012/10/25/bioinformatics.bts635.full.pdf+html), [TopHat 2](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4053844/pdf/gb-2013-14-4-r36.pdf)
 
 One of important characterstic of RNA sequencing mapping is efficient evaluation of splice isoforms from Sequencing. Given mapper we have and also based on some literature as well as course work, we intially have come to use STAR as mapping tools. However, it would be necessary to give some plausible and valid arguments for this selections. Additionally, we have to consider the computation time for each mapping tools as we are running mapping for at least 12 times within our whole study. Thus at present I would like to keep as a open argument and based on some optimization observe which tool is better
 
@@ -142,8 +139,8 @@ Based on mapper, we would use [samtools](http://samtools.sourceforge.net/) to fi
 
 * Downstreaming analysis of mapped reads
 
-** Differential expression analysis
-Tools in consideration : [DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html), [edge] (https://www.bioconductor.org/packages/3.3/bioc/vignettes/edge/inst/doc/edge.pdf), [cuffdiff] (http://cole-trapnell-lab.github.io/cufflinks/cuffdiff/)
+** Differential expression analysis : Tools in consideration 
+[DESeq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html), [edge] (https://www.bioconductor.org/packages/3.3/bioc/vignettes/edge/inst/doc/edge.pdf), [cuffdiff] (http://cole-trapnell-lab.github.io/cufflinks/cuffdiff/)
 
 These are preliminary list of tools in differential expression analysis. Based on lecture our prefrences are on DESeq2.However we should have aliterature review on this.
 
