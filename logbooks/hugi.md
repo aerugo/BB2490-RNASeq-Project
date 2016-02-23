@@ -28,16 +28,16 @@ I worked on preprocessing with Sailendra this afternoon. We started by becoming 
 |   |-- SN_12_UNST: Sample from person 3, untreated
 |   |   `-- Paired end reads, fastq format from four lanes of flowcell 1, adapter with tag ACAGTG.
 `-- Flowcell 2: 130104_SN866_0198_BC1DAYACXX
-|   |-- SN_10_LPS: Sample from person 1, treated with LPS
-|   |   `-- Paired end reads in fastq format from four lanes of flowcell 2, adapter with tag CGATGT.
-|   |-- SN_10_UNST: Sample from person 1, untreated
-|   |   `-- Paired end reads in fastq format from four lanes of flowcell 2, adapter with tag ATCACG.
-|   |-- SN_11_LPS: Sample from person 2, treated with LPS
-|   |   `-- Paired end reads in fastq format from four lanes of flowcell 2, adapter with tag TGACCA.
-|   |-- SN_11_UNST: Sample from person 2, untreated
-|   |   `-- Paired end reads, fastq format from four lanes of flowcell 2, adapter with tag TTAGGC.
-|   |-- SN_12_LPS: Sample from person 3, treated with LPS
-|   |   `-- Paired end reads in fastq format from four lanes of flowcell 2, adapter with tag GCCAAT.
-|   |-- SN_12_UNST: Sample from person 3, untreated
-|   |   `-- Paired end reads, fastq format from four lanes of flowcell 2, adapter with tag ACAGTG.
+    |-- SN_10_LPS: Sample from person 1, treated with LPS
+    |   `-- Paired end reads in fastq format from four lanes of flowcell 2, adapter with tag CGATGT.
+    |-- SN_10_UNST: Sample from person 1, untreated
+    |   `-- Paired end reads in fastq format from four lanes of flowcell 2, adapter with tag ATCACG.
+    |-- SN_11_LPS: Sample from person 2, treated with LPS
+    |   `-- Paired end reads in fastq format from four lanes of flowcell 2, adapter with tag TGACCA.
+    |-- SN_11_UNST: Sample from person 2, untreated
+    |   `-- Paired end reads, fastq format from four lanes of flowcell 2, adapter with tag TTAGGC.
+    |-- SN_12_LPS: Sample from person 3, treated with LPS
+    |   `-- Paired end reads in fastq format from four lanes of flowcell 2, adapter with tag GCCAAT.
+    |-- SN_12_UNST: Sample from person 3, untreated
+    |   `-- Paired end reads, fastq format from four lanes of flowcell 2, adapter with tag ACAGTG.
 ```
