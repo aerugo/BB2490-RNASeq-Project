@@ -119,13 +119,13 @@ As planned I and Hugio met at KTH to get hands on data analysis and substantiate
 In my opinion major task in sequencing is composed of three major parts :
 * Preprocessing of reads
 * Alignment and Mapping of reads
-* Answering biological questions from mapped reads
+* Downstreaming analysis from mapped reads
 
 Thus, in each step we have to rigorously determine tool's advantages and shortcomings . At first we started tentatively with listing (for preprocessing used) tools for analysis of RNA seq data.
 
 * Preprocessing of read data
 
-Tools in consideration : [TrimGalore] (http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/trim_galore_User_Guide_v0.3.7.pdf), [FastQC] (https://wiki.hpcc.msu.edu/display/Bioinfo/FastQC+Tutorial), [Trimmomatic] (http://bioinformatics.oxfordjournals.org/content/30/15/2114.full.pdf+html)
+Tools in consideration : [TrimGalore] (http://www.bioinformatics.babraham.ac.uk/projects/trim_galore/trim_galore_User_Guide_v0.3.7.pdf), [FastQC] (https://wiki.hpcc.msu.edu/display/Bioinfo/FastQC+Tutorial), [Trimmomatic] (http://bioinformatics.oxfordjournals.org/content/30/15/2114.full.pdf+html), [FastX] (http://hannonlab.cshl.edu/fastx_toolkit/index.html)
 
 
 
