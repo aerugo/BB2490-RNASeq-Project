@@ -1,3 +1,10 @@
+############
+## Project specific
+###########
+
+data/preprocessed_reads/
+
+
 #################
 ## Eclipse
 #################
