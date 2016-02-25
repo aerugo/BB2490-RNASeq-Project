@@ -27,7 +27,7 @@ input=/proj/g2015056/BB2490/proj5_ASE/130104_SN866_0197_AC1DLVACXX/Sample_SN10_U
 adapter=ATCACG
 
 ##Nextera                                                                                                                                                                                                                                     
-trim_galore -a ${adapter} -a2 ${adapter} -q 25 --stringency 1 --paired --length 25 -o ${output} ${input}SN10_UNST_ATCACG_L001_R1_001.fastq.gz ${input}SN10_UNST_ATCACG_L001_R2_001.fastq.gz
+trim_galore -q 25 --stringency 1 --paired --length 25 -o ${output} ${input}SN10_UNST_ATCACG_L001_R1_001.fastq.gz ${input}SN10_UNST_ATCACG_L001_R2_001.fastq.gz
 #trim_galore -a ${adapter} -a2 ${adapter} -q 25 --stringency 5 --paired --length 25 -o ${output} ${input}S0156_1.fastq.gz ${input}S0156_2.fastq.gz &
 #trim_galore -a ${adapter} -a2 ${adapter} -q 25 --stringency 5 --paired --length 25 -o ${output} ${input}S0160_1.fastq.gz ${input}S0160_2.fastq.gz &
 #wait
