@@ -3,6 +3,7 @@
 ###########
 
 data/preprocessed_reads/
+data/reference_genome_indexes/
 
 
 #################
