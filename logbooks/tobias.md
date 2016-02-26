@@ -35,3 +35,9 @@ doi: 10.1038/nmeth.3582
 doi: 10.1093/bioinformatics/btu802
 doi: 10.1186/s13059-014-0405-3
 doi: 10.1038/srep21134
+
+## Week two
+
+**NB:** I've been busy cultivating cells this week so I havn't had time to work on the project and therefore worked the weeekend before and will also put in some extra work the coming weekend.
+
+### Captains log, stardate 1502.26 - Seminar
