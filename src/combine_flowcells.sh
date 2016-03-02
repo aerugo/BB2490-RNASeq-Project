@@ -31,20 +31,12 @@ cd ${output}
 for directory in ${input_fc1}/S*; do
     cd ${directory}
     for file in *.fastq.gz; do
-        filename=$(basename "$file")
-        echo "File 1"
-        echo ${filename}
+        file1=$(basename "$file")
         file2=${input_fc2}$(basename "$directory")/$(basename "$file")
-        echo ${file2}
-        ls ${file2}
-        #echo "Yay1"
-        #ls ${input_fc1}/${directory##*/}/${filename}
-        #echo "Yay2"
-        #echo ${input_fc2}/${directory##*/}/${filename}
-        #echo "Yay3"
-        #ls ${input_fc2}/${directory##*/}/${filename}
-        #echo "Yay4"
+        echo "Start cat of "${file1}
+        cat ${file1} ${file2} > ${output}${file1}
+        echo "Finished cat of "${output}${file1}
+        gunzip ${output}file1
+        echo "Unzipped "${output}${file1}
     done
 done
-
-# cat ${input_fc1}/Sample_SN_10_LPS/SN_10_LPS_CGATGT_L001_R1_001.fastq.gz ${input_fc2}/Sample_SN_10_LPS/SN_10_LPS_CGATGT_L001_R1_001.fastq.gz
