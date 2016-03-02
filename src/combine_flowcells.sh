@@ -34,7 +34,7 @@ for directory in ${input_fc1}/S*; do
         filename=$(basename "$file")
         echo "File 1"
         echo ${filename}
-        file2=${input_fc2}$(basename "$directory")$(basename "$file")
+        file2=${input_fc2}$(basename "$directory")/$(basename "$file")
         echo ${file2}
         ls ${file2}
         #echo "Yay1"
