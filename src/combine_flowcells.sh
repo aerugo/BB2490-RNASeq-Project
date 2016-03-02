@@ -31,7 +31,7 @@ cd ${output}
 for directory in ${input_fc1}/S*; do
     cd ${directory}
     for file in *.fastq.gz; do
-        ls file
+        ls ${file}
         filename=$(basename "$file")
         echo ${filename}
         #echo "Yay1"
