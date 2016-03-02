@@ -37,4 +37,4 @@ for directory in ${input_fc1}; do
     done
 done
 
-cat ${input_fc1}/Sample_SN_10_LPS/SN_10_LPS_CGATGT_L001_R1_001.fastq.gz ${input_fc2}/Sample_SN_10_LPS/SN_10_LPS_CGATGT_L001_R1_001.fastq.gz
+# cat ${input_fc1}/Sample_SN_10_LPS/SN_10_LPS_CGATGT_L001_R1_001.fastq.gz ${input_fc2}/Sample_SN_10_LPS/SN_10_LPS_CGATGT_L001_R1_001.fastq.gz
