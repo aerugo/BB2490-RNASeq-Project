@@ -32,17 +32,18 @@ for directory in ${input_fc1}/S*; do
     cd ${directory}
     ls
     echo "New directory"
-    for file in ${directory}; do
-        echo "Yay0"
+    for file in ${directory}*fastq.gz; do
+        echo "New file"
+        ls file
         filename=$(basename "$file")
         echo ${filename}
-        echo "Yay1"
-        ls ${input_fc1}/${directory##*/}/${filename}
-        echo "Yay2"
-        echo ${input_fc2}/${directory##*/}/${filename}
-        echo "Yay3"
-        ls ${input_fc2}/${directory##*/}/${filename}
-        echo "Yay4"
+        #echo "Yay1"
+        #ls ${input_fc1}/${directory##*/}/${filename}
+        #echo "Yay2"
+        #echo ${input_fc2}/${directory##*/}/${filename}
+        #echo "Yay3"
+        #ls ${input_fc2}/${directory##*/}/${filename}
+        #echo "Yay4"
     done
 done
 
