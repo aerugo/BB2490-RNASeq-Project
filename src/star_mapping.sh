@@ -1,4 +1,4 @@
- /bin/bash -l                                                                                                                                                                                                                              
+#!/bin/bash -l                                                                                                                                                                                                                              
 #SBATCH -A g2015056                                                                                                                                                                                     
 #SBATCH -t 4:00:00                                                                                                                                                                                                                           
 #SBATCH -J star_mapping-3
