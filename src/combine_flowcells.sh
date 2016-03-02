@@ -33,9 +33,10 @@ for directory in ${input_fc1}/S*; do
     for file in *.fastq.gz; do
         filename=$(basename "$file")
         echo "File 1"
-        echo filename
+        echo ${filename}
         file2=${input_fc2}$(basename "$directory")$(basename "$file")
-        ls file2
+        echo ${file2}
+        ls ${file2}
         #echo "Yay1"
         #ls ${input_fc1}/${directory##*/}/${filename}
         #echo "Yay2"
