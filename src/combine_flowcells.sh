@@ -31,7 +31,9 @@ cd ${output}
 for directory in ${input_fc1}; do
     cd ${directory}
     ls
+    echo "New directory"
     for file in ${directory}/S*; do
+        echo "Yay0"
         filename=$(basename "$file")
         echo ${filename}
         echo "Yay1"
