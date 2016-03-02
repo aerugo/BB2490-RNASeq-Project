@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 #! /bin/bash -l
 #SBATCH -A g2015056
 #SBATCH -t 4:00:00
@@ -18,6 +17,7 @@ output=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_r
 
 cd ${input}
 for file in *.fastq.gz; do
+    echo "first file"
     filename=${basename ${file}}
     substring=${filename:0:22}
     echo ${substring}"R1_001_val_1.fastq"
