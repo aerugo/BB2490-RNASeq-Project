@@ -1,7 +1,7 @@
 #! /bin/bash -l                                                                                                                                                                                                                              
 #SBATCH -A g2015056                                                                                                                                                                                     
 #SBATCH -t 10:00:00
-#SBATCH -J trim and combine
+#SBATCH -J trimcombine
 #SBATCH -p core -n 2
 #SBATCH -C thin                                                                                                                                                                                                                              
 #SBATCH -e /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/combine_flowcells_err.txt
