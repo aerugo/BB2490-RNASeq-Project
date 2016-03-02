@@ -28,11 +28,11 @@ input_fc2=/proj/g2015056/BB2490/proj5_ASE/130104_SN866_0198_BC1DAYACXX/
 
 cd ${output}
 
-for directory in ${input_fc1}; do
+for directory in ${input_fc1}/S*; do
     cd ${directory}
     ls
     echo "New directory"
-    for file in ${directory}/S*; do
+    for file in ${directory}; do
         echo "Yay0"
         filename=$(basename "$file")
         echo ${filename}
