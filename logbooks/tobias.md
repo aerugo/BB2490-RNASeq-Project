@@ -40,4 +40,19 @@ doi: 10.1038/srep21134
 
 **NB:** I've been busy cultivating cells this week so I havn't had time to work on the project and therefore worked the weeekend before and will also put in some extra work the coming weekend.
 
-### Captains log, stardate 1502.26 - Seminar
+### Captains log, stardate 1502.26 - Seminar, project discussion and initial runs
+
+The first thing today was attending to the seminar and also presenting our progress since last friday. During this time, Sailendra also briefed me on what he and Hugi did last tuesday to make sure I did not miss anything important when reading their results/diaries. We had some minor discussion regarding our problems with Johannes Alneberg.
+
+After lunch Sailendra and I met up to work on the project. We started by discussing what questions we actually wanted to answer with this project, mainly focused around the random sampling and the problems of the unevenly distributed reads in different flow cells. Somewhere aruond here, Hugi arrived and he joined the discussion. We ended at the point where we were unsure of whether we were supposed to run the analysis on the **pooled genome subsamplings**, **individual subsampling tests** or if we should try to make all the reads have an **even distribution** by **discarding data**. We decided that we should talk to Olof regarding our problems regarding which question to answer and the "strangeness" of the unevenly distributed reads in the flowcells. We also asked about the hypothesis about saturation in hopes of being provided with some articles on the subject.
+
+https://rawgit.com/aerugo/BB2490-RNASeq-Project/master/results/Readcounts.png
+**[INPUT GRAPH OF READ DISTRIBUTION]**
+
+When the email to Olof was sent we started working. Sailendra and Hugi started on the mapping and also looked a little bit at running STAR whilst I looked further into the DE software analysis. After some time of reading I recommended DESeq as a suitable tool for our analysis since it had been recommended by studies and seemed to perform very well. Granted, there was several suitable software but there were only a few which performed at the top level and of these few top-performers (**DESeq**, **edgeR** and **limma**) DESeq was the most commonly mentioned. Being the most common software compared might not be a merit in itself but it also showed to be more documented and therefore I thought that to be a good tiebraker as for now. Furthermore, edgeR was shown to be more liberal than DESeq but also accepting more FP and having an increased FPR (FP rate) than DESeq which is according to my opinion something that shows it is not as good as DESeq (but it should be noted that is just my personal preference but the group seemed to agree).
+
+**[LINK TO THE TWO MAIN STUDIES IN RESOURCES]**
+
+One of the articles also mentioned some things about sequencing depths and more specifically what they called **unbalanced sequencing depths**, which seemed to be what we have in our situtaion. In this study they showed that DESeq (and other DE-software) handled in group variations which would mean that potentially our in group variation will not affect the DE results, which would be nice. It should be noted that a **between group variation** seemed to impact the DE analysis negatively which would mean our current 2:nd sample  (high sequencing depths) sample would be impaired in its ability to find DE genes (DEG).
+
+The last thing I did was to star looking at how GeneiASE works, what it does and what makes it interesting. So far I've gotten some information like: it **compensates for mapping bias** by using a modified binominal distribution, it analyses the icd-ASE which means it cannot only see which allele is exressed more but also make a comparison between two individual conditions. So basically it produces the allelic inbalance for a specific alles whilst also seing how that balance changes between conditions. By now I have to start to dig into the supplemental information in order to find out more about the method GeneIASE uses to counteract the mapping bias and hopefully we can have a discussion about it at our next meeting with Olof.
