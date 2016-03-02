@@ -31,9 +31,11 @@ cd ${output}
 for directory in ${input_fc1}/S*; do
     cd ${directory}
     for file in *.fastq.gz; do
-        ls ${file}
         filename=$(basename "$file")
-        echo ${filename}
+        echo "File 1"
+        echo filename
+        file2=${input_fc2}$(basename "$directory")$(basename "$file")
+        ls file2
         #echo "Yay1"
         #ls ${input_fc1}/${directory##*/}/${filename}
         #echo "Yay2"
