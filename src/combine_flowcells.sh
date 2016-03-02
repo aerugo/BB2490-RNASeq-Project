@@ -36,7 +36,7 @@ for directory in ${input_fc1}/S*; do
         echo "Start cat of "${file1}
         cat ${file1} ${file2} > ${output}${file1}
         echo "Finished cat of "${output}${file1}
-        gunzip ${output}file1
+        gunzip ${output}${file1}
         echo "Unzipped "${output}${file1}
     done
 done
