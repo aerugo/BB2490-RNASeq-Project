@@ -30,10 +30,7 @@ cd ${output}
 
 for directory in ${input_fc1}/S*; do
     cd ${directory}
-    ls
-    echo "New directory"
-    for file in ${directory}*fastq.gz; do
-        echo "New file"
+    for file in *.fastq.gz; do
         ls file
         filename=$(basename "$file")
         echo ${filename}
