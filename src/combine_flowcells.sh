@@ -31,13 +31,14 @@ cd ${output}
 for directory in ${input_fc1}; do
     echo ls ${directory}/S*
     for file in ${directory}/S*; do
-        echo ${file##*/}
+        filename=$(basename "$file")
+        echo ${filename}
         echo "Yay1"
-        ls ${input_fc1}/${directory##*/}/${file##*/}
+        ls ${input_fc1}/${directory##*/}/${filename}
         echo "Yay2"
-        echo ${input_fc2}/${directory##*/}/${file##*/}
+        echo ${input_fc2}/${directory##*/}/${filename}
         echo "Yay3"
-        ls ${input_fc2}/${directory##*/}/${file##*/}
+        ls ${input_fc2}/${directory##*/}/${filename}
         echo "Yay4"
     done
 done
