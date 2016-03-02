@@ -20,20 +20,22 @@ cd ${input}
 for file in *.fastq.gz; do
     filename=${basename ${file}}
     substring=${filename:0:22}
-    trim_galore -q 25 --stringency 1 --paired --length 25 -o ${output} ${read1} ${read2}
+    echo ${substring}"R1_001_val_1.fastq"
+    ls ${substring}"R1_001_val_1.fastq"
+    #trim_galore -q 25 --stringency 1 --paired --length 25 -o ${output} ${read1} ${read2}
 done
 
 
 
-module load bioinfo-tools FastQC
-fastqc ${output}SN_10_LPS_CGATGT_L001_R1_001_val_1.fq.gz &
-fastqc ${output}SN_10_LPS_CGATGT_L001_R2_001_val_2.fq.gz &
-wait
+#module load bioinfo-tools FastQC
+#fastqc ${output}SN_10_LPS_CGATGT_L001_R1_001_val_1.fq.gz &
+#fastqc ${output}SN_10_LPS_CGATGT_L001_R2_001_val_2.fq.gz &
+#wait
 
-fastqc ${output}SN10_UNST_ATCACG_L001_R1_001_val_1.fq.gz &
-fastqc ${output}SN10_UNST_ATCACG_L001_R2_001_val_2.fq.gz &
-wait
-
-mkdir -p /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/results/2016-02-26/fastq_results/
-mv -v ${output}*.zip /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/results/2016-02-26/fastq_results/
-mv -v ${output}*.html /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/results/2016-02-26/fastq_results/
+#fastqc ${output}SN10_UNST_ATCACG_L001_R1_001_val_1.fq.gz &
+#fastqc ${output}SN10_UNST_ATCACG_L001_R2_001_val_2.fq.gz &
+#wait
+#
+#mkdir -p /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/results/2016-02-26/fastq_results/
+#mv -v ${output}*.zip /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/results/2016-02-26/fastq_results/
+#mv -v ${output}*.html /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/results/2016-02-26/fastq_results/
