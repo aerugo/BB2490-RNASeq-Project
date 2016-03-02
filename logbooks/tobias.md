@@ -1,4 +1,4 @@
-I've moved my diary to the project wiki, https://rawgit.com/aerugo/BB2490-RNASeq-Project/wiki/Tobias'-Logbook
+I've moved my diary to the project wiki, https://github.com/aerugo/BB2490-RNASeq-Project/wiki/Tobias'-Logbook
 
 # Diary - Tobias Frick
 
