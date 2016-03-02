@@ -40,7 +40,9 @@ fastqc ${output}SN10_UNST_ATCACG_L001_R2_001_val_2.fq.gz &
 wait
 
 mkdir -p /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/results/2016-02-26/fastq_results/
-mv -v ${output}*.fq_fastqc* /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/results/2016-02-26/fastq_results/
+mv -v ${output}*.zip /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/results/2016-02-26/fastq_results/
+mv -v ${output}*.html /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/results/2016-02-26/fastq_results/
+
 
 #trim_galore -a ${adapter} -a2 ${adapter} -q 25 --stringency 5 --paired --length 25 -o ${output} ${input}S0156_1.fastq.gz ${input}S0156_2.fastq.gz &
 #trim_galore -a ${adapter} -a2 ${adapter} -q 25 --stringency 5 --paired --length 25 -o ${output} ${input}S0160_1.fastq.gz ${input}S0160_2.fastq.gz &

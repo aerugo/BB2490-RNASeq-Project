@@ -4,7 +4,8 @@
 
 data/preprocessed_reads/
 data/reference_genome_indexes/
-
+star_index/
+star_mapping/
 
 #################
 ## Eclipse
