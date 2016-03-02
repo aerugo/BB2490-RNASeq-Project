@@ -29,8 +29,8 @@ input_fc2=/proj/g2015056/BB2490/proj5_ASE/130104_SN866_0198_BC1DAYACXX/
 cd ${output}
 
 for directory in ${input_fc1}; do
-    ls ${directory}
-    for file in ${directory}; do
+    echo ls ${directory}/S*
+    for file in ${directory}/S*; do
         echo ${file##*/}
         echo "Yay1"
         ls ${input_fc1}/${directory##*/}/${file##*/}
