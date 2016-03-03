@@ -19,9 +19,9 @@ module add cutadapt
 module add TrimGalore
 
 input=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/20160302/combined/
-output=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/20160303/trimmed/
+output=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/20160302/trimmed/
 
-SAMPLES=(SN_10_LPS_CGATGT SN10_UNST_ATCACG SN_11_LPS_TGACCA SN11_UNST_TTAGGC SN_12_LPS_GCCAAT SN12_UNST_ACAGTG)
+SAMPLES=(SN_11_LPS_TGACCA SN11_UNST_TTAGGC SN_12_LPS_GCCAAT SN12_UNST_ACAGTG)
 
 cd ${input}
 
