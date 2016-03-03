@@ -1,7 +1,7 @@
 #! /bin/bash -l
 #SBATCH -A g2015056
 #SBATCH -t 4:00:00
-#SBATCH -J trim and combine
+#SBATCH -J trimall
 #SBATCH -p node -n 8
 #SBATCH -C thin
 #SBATCH -e /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/trim_all_err.txt
