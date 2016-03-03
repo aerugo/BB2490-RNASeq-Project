@@ -22,7 +22,7 @@ input=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_re
 output=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/20160303/trimmed/
 
 cd ${input}
-for file in *.fastq.gz; do
+for file in *.fastq; do
     echo "first file"
     filename=${file##*}
     substring=${filename:0:22}
