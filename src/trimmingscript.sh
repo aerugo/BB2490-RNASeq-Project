@@ -1,14 +1,13 @@
 #! /bin/bash -l
 #SBATCH -A g2015056
-#SBATCH -t 4:00:00
+#SBATCH -t 10:00:00
 #SBATCH -J trimall
-#SBATCH -p core -n 2
+#SBATCH -p core -n 6
 #SBATCH -C thin
 #SBATCH -e /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/trim_all_err.txt
 #SBATCH -o /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/trim_all_out.txt
 #SBATCH --mail-type=All
 #SBATCH --mail-user=sailendra.pradhananga@scilifelab.se
-
 
 ## Trimming
 
