@@ -26,7 +26,7 @@ SAMPLES=(SN_10_LPS_CGATGT SN10_UNST_ATCACG SN_11_LPS_TGACCA SN11_UNST_TTAGGC SN_
 cd ${input}
 
 for i in "${SAMPLES[@]}"; do
-    for file in ${i}*; do
+    for file in ${i}*"R1_001.fastq"; do
         substring=${file:0:22}
         paired_read1=${substring}"R1_001.fastq"
         paired_read2=${substring}"R2_001.fastq"
