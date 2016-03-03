@@ -22,14 +22,54 @@ input=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_re
 output=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/20160303/trimmed/
 
 cd ${input}
-for file in *R1_001.fastq; do
+
+for file in SN_10_LPS_CGATGT*; do
     substring=${file:0:22}
     paired_read1=${substring}"R1_001.fastq"
     paired_read2=${substring}"R2_001.fastq"
-    trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${paired_read1} ${paired_read2}
+    trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${paired_read1} ${paired_read2} &
 done
+wait
 
+for file in SN10_UNST_ATCACG*; do
+    substring=${file:0:22}
+    paired_read1=${substring}"R1_001.fastq"
+    paired_read2=${substring}"R2_001.fastq"
+    trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${paired_read1} ${paired_read2} &
+done
+wait
 
+for file in SN_11_LPS_TGACCA*; do
+    substring=${file:0:22}
+    paired_read1=${substring}"R1_001.fastq"
+    paired_read2=${substring}"R2_001.fastq"
+    trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${paired_read1} ${paired_read2} &
+done
+wait
+
+for file in SN11_UNST_TTAGGC*; do
+    substring=${file:0:22}
+    paired_read1=${substring}"R1_001.fastq"
+    paired_read2=${substring}"R2_001.fastq"
+    trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${paired_read1} ${paired_read2} &
+done
+wait
+
+for file in SN_12_LPS_GCCAAT*; do
+    substring=${file:0:22}
+    paired_read1=${substring}"R1_001.fastq"
+    paired_read2=${substring}"R2_001.fastq"
+    trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${paired_read1} ${paired_read2} &
+done
+wait
+
+for file in SN12_UNST_ACAGTG*; do
+    substring=${file:0:22}
+    paired_read1=${substring}"R1_001.fastq"
+    paired_read2=${substring}"R2_001.fastq"
+    trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${paired_read1} ${paired_read2} &
+done
+wait
 
 #module load bioinfo-tools FastQC
 #fastqc ${output}SN_10_LPS_CGATGT_L001_R1_001_val_1.fq.gz &
