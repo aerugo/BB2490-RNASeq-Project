@@ -26,14 +26,6 @@ for file in *R1_001.fastq; do
     substring=${file:0:22}
     paired_read1=${substring}"R1_001.fastq"
     paired_read2=${substring}"R2_001.fastq"
-    echo "trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o "${output}" "${paired_read1}" "${paired_read2}
-done
-
-cd ${input}
-for file in *R1_001.fastq; do
-    substring=${file:0:22}
-    paired_read1=${substring}"R1_001.fastq"
-    paired_read2=${substring}"R2_001.fastq"
     trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${paired_read1} ${paired_read2}
 done
 
