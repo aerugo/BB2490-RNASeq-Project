@@ -12,6 +12,12 @@
 
 ## Trimming
 
+module load bioinfo-tools
+module add python/2.7
+module add FastQC
+module add cutadapt
+module add TrimGalore
+
 input=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/20160302/combined/
 output=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/20160303/trimmed/
 
