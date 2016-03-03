@@ -22,10 +22,10 @@ input=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_re
 output=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/20160303/trimmed/
 
 cd ${input}
+ls
 for file in *.fastq; do
     echo "first file"
-    filename=${file##*}
-    substring=${filename:0:22}
+    substring=${file:0:22}
     paired_read1=${substring}"R1_001.fastq"
     paired_read2=${substring}"R2_001.fastq"
     echo ${paired_read1}
