@@ -1,0 +1,35 @@
+#person_1_treated_sample
+person_1_treated_sample_lane_1.bam 39000000
+person_1_treated_sample_lane_2.bam 34000000
+person_1_treated_sample_lane_3.bam 38000000
+person_1_treated_sample_lane_4.bam 29000000
+
+#person_1_untreated_sample
+person_1_untreated_sample_lane_1.bam 39000000
+person_1_untreated_sample_lane_2.bam 30000000
+person_1_untreated_sample_lane_3.bam 41000000
+person_1_untreated_sample_lane_4.bam 29000000
+
+#person_2_treated_sample
+person_2_treated_sample_lane_1.bam 130000000
+person_2_treated_sample_lane_2.bam 144000000
+person_2_treated_sample_lane_3.bam 168000000
+person_2_treated_sample_lane_4.bam 121000000
+
+#person_2_untreated_sample
+person_2_untreated_sample_lane_1.bam 60000000
+person_2_untreated_sample_lane_2.bam 70000000
+person_2_untreated_sample_lane_3.bam 75000000
+person_2_untreated_sample_lane_4.bam 80000000
+
+#person_3_treated_sample
+person_3_treated_sample_lane_1.bam 60000000
+person_3_treated_sample_lane_2.bam 63000000
+person_3_treated_sample_lane_3.bam 65000000
+person_3_treated_sample_lane_4.bam 61000000
+
+#person_3_untreated_sample
+person_3_untreated_sample_lane_1.bam 60000000
+person_3_untreated_sample_lane_2.bam 65000000
+person_3_untreated_sample_lane_3.bam 63000000
+person_3_untreated_sample_lane_4.bam 68000000
