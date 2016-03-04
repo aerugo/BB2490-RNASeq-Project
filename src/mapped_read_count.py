@@ -1,6 +1,7 @@
 ! /usr/bin/env python
 # This script takes STAR logfiles and retrieves the number of mapped
-# reads.
+# reads. Some not-so-elegant solutions are marked with "### UNSTABLE 
+# SOLUTION"
 # Syntax: ./counter.py [DIRECTORY_FOR_INPUT_BAM/LOG] [OUTPUT_FILENAME]
 
 import sys, os
@@ -17,8 +18,8 @@ for fname in directory:
 file_list.sort()
 
 # Devides file list into bam and log files.
-file_list_bam = file_list[0:len(file_list):2] 	### UNSTABLE SOLUTION, depends the list ordering to sort one [bam, log, bam, log...]
-file_list_log = file_list[1:len(file_list):2] 	### UNSTABLE SOLUTION, depends the list ordering to sort one [bam, log, bam, log...]
+file_list_bam = file_list[0:len(file_list):2] 	### UNSTABLE SOLUTION, depends the list ordering to be [bam, log, bam, log...]
+file_list_log = file_list[1:len(file_list):2] 	### UNSTABLE SOLUTION, depends the list ordering to be [bam, log, bam, log...]
 
 # Opens an output file.
 with open(sys.argv[2],'w') as out:
@@ -27,7 +28,7 @@ with open(sys.argv[2],'w') as out:
 
 	# Loop for every log file found.
 	for file_name in file_list_bam:
-		counter = counter + 1 	### UNSTABLE SOLUTION, see line 28 (counter)
+		counter = counter + 1 	### UNSTABLE SOLUTION, see line 29 (counter)
 
 		# Writes a header into the output containing the sample
 		# name and the treatment. If the sample and treatment are
@@ -36,13 +37,13 @@ with open(sys.argv[2],'w') as out:
 			pass
 		else:
 			out.writelines('\n#')
-			for elements in file_list_bam[counter].split('_')[:2]: ### UNSTABLE SOLUTION, see line 28 (counter)
+			for elements in file_list_bam[counter].split('_')[:2]: ### UNSTABLE SOLUTION, see line 29 (counter)
 				out.writelines(str(elements)+' ')
 
 		# Opens the file and retrieves the number of mapped reads
 		# and writes to output file.
 		count_column = open(file_name,'r').readlines()[8]	### UNSTABLE SOLUTION, takes 8th column and does not look for "Uniquely mapped read count"
-		out.writelines('\n'+file_list_bam[counter]+'\t'+count_column.split()[-1])	### UNSTABLE SOLUTION, see line 28 (counter)
+		out.writelines('\n'+file_list_bam[counter]+'\t'+count_column.split()[-1])	### UNSTABLE SOLUTION, see line 29 (counter)
 
 		# Updates previous name variable.
 		previous_name = file_name.split('_')[:2]
