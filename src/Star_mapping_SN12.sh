@@ -1,6 +1,6 @@
 #! /bin/bash -l                                                                                                                                                                                                                              
 #SBATCH -A g2015056                                                                                                                                                                                     
-#SBATCH -t 4:00:00                                                                                                                                                                                                                           
+#SBATCH -t 8:00:00                                                                                                                                                                                                                           
 #SBATCH -J star_mapping-S12
 #SBATCH -p node -n 8
 #SBATCH -C thin                                                                                                                                                                                                                              
