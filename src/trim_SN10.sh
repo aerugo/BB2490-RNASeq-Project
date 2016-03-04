@@ -21,23 +21,23 @@ input=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_re
 output=/proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/preprocessed_reads/20160302/trimmed/
 
 
-trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN_10_LPS_CGATGT_L001_R1_001.fastq ${input}SN_10_LPS_CGATGT_L001_R2_001.fastq &
+trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN11_UNST_TTAGGC_L002_R1_001.fastq ${input}SN11_UNST_TTAGGC_L002_R2_001.fastq &
 
-trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN_10_LPS_CGATGT_L002_R1_001.fastq ${input}SN_10_LPS_CGATGT_L002_R2_001.fastq &
+trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN11_UNST_TTAGGC_L003_R1_001.fastq ${input}SN11_UNST_TTAGGC_L003_R2_001.fastq &
 
-trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN_10_LPS_CGATGT_L003_R1_001.fastq ${input}SN_10_LPS_CGATGT_L003_R2_001.fastq &
+trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN11_UNST_TTAGGC_L004_R1_001.fastq ${input}SN11_UNST_TTAGGC_L004_R2_001.fastq &
 
-trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN_10_LPS_CGATGT_L004_R1_001.fastq ${input}SN_10_LPS_CGATGT_L004_R2_001.fastq &
+trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN11_UNST_TTAGGC_L005_R1_001.fastq ${input}SN11_UNST_TTAGGC_L005_R2_001.fastq &
 wait
 
 
-trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN10_UNST_ATCACG_L001_R1_001.fastq ${input}SN10_UNST_ATCACG_L001_R2_001.fastq &
+trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN_11_LPS_TGACCA_L002_R1_001.fastq ${input}SN_11_LPS_TGACCA_L002_R1_001.fastqt &
 
-trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN10_UNST_ATCACG_L002_R1_001.fastq ${input}SN10_UNST_ATCACG_L002_R2_001.fastq &
+trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN11_UNST_ATCACG_L002_R1_001.fastq ${input}SN11_UNST_ATCACG_L002_R2_001.fastq &
 
-trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN10_UNST_ATCACG_L003_R1_001.fastq ${input}SN10_UNST_ATCACG_L003_R2_001.fastq &
+trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN11_UNST_ATCACG_L003_R1_001.fastq ${input}SN11_UNST_ATCACG_L003_R2_001.fastq &
 
-trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN10_UNST_ATCACG_L004_R1_001.fastq ${input}SN10_UNST_ATCACG_L004_R2_001.fastq &
+trim_galore -q 25 --stringency 1 --paired --length 25 --fastqc -o ${output} ${input}SN11_UNST_ATCACG_L004_R1_001.fastq ${input}SN11_UNST_ATCACG_L004_R2_001.fastq &
 wait
 
 

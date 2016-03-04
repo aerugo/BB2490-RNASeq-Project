@@ -31,6 +31,7 @@ for directory in ${input_fc1}/S*; do
         file1=$(basename "$file")
         file2=${input_fc2}$(basename "$directory")/$(basename "$file")
         cat ${file1} ${file2} > ${output}${file1}
+
         gunzip ${output}${file1}
     done
 done
