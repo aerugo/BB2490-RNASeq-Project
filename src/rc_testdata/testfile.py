@@ -1,3 +1,0 @@
-% Derpa derpa
-
-Thingimajigg
