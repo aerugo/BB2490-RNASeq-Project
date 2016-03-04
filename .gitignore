@@ -6,6 +6,7 @@ data/preprocessed_reads/
 data/reference_genome_indexes/
 data/star_index/
 data/star_mapping/
+private
 
 #################
 ## Eclipse
