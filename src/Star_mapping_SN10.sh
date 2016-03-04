@@ -29,8 +29,8 @@ STAR --genomeDir ${reference} --runThreadN 8 --readFilesIn ${input}SN10_UNST_ATC
 
 STAR --genomeDir ${reference} --runThreadN 8 --readFilesIn ${input}SN_10_LPS_CGATGT_L001_R1_001_val_1.fq ${input}SN_10_LPS_CGATGT_L001_R2_001_val_2.fq --outReadsUnmapped Fastx --outFileNamePrefix ${output}/SN_10_LPS_CGATGT_L001
 
-STAR --genomeDir ${reference} --runThreadN 8 --readFilesIn ${input}SN_10_LPS_CGATGT_L001_R1_001_val_1.fq ${input}SN_10_LPS_CGATGT_L002_R2_001_val_2.fq --outReadsUnmapped Fastx --outFileNamePrefix ${output}/SN_10_LPS_CGATGT_L002
+STAR --genomeDir ${reference} --runThreadN 8 --readFilesIn ${input}SN_10_LPS_CGATGT_L002_R1_001_val_1.fq ${input}SN_10_LPS_CGATGT_L002_R2_001_val_2.fq --outReadsUnmapped Fastx --outFileNamePrefix ${output}/SN_10_LPS_CGATGT_L002
 
-STAR --genomeDir ${reference} --runThreadN 8 --readFilesIn ${input}SN_10_LPS_CGATGT_L001_R1_001_val_1.fq ${input}SN_10_LPS_CGATGT_L003_R2_001_val_2.fq --outReadsUnmapped Fastx --outFileNamePrefix ${output}/SN_10_LPS_CGATGT_L003
+STAR --genomeDir ${reference} --runThreadN 8 --readFilesIn ${input}SN_10_LPS_CGATGT_L003_R1_001_val_1.fq ${input}SN_10_LPS_CGATGT_L003_R2_001_val_2.fq --outReadsUnmapped Fastx --outFileNamePrefix ${output}/SN_10_LPS_CGATGT_L003
 
-STAR --genomeDir ${reference} --runThreadN 8 --readFilesIn ${input}SN_10_LPS_CGATGT_L001_R1_001_val_1.fq ${input}SN_10_LPS_CGATGT_L004_R2_001_val_2.fq --outReadsUnmapped Fastx --outFileNamePrefix ${output}/SN_10_LPS_CGATGT_L004 
+STAR --genomeDir ${reference} --runThreadN 8 --readFilesIn ${input}SN_10_LPS_CGATGT_L004_R1_001_val_1.fq ${input}SN_10_LPS_CGATGT_L004_R2_001_val_2.fq --outReadsUnmapped Fastx --outFileNamePrefix ${output}/SN_10_LPS_CGATGT_L004 

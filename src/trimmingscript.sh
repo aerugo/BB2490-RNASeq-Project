@@ -1,6 +1,6 @@
 #! /bin/bash -l
 #SBATCH -A g2015056
-#SBATCH -t 15:00:00
+#SBATCH -t 20:00:00
 #SBATCH -J trimall
 #SBATCH -p core -n 6
 #SBATCH -C thin
