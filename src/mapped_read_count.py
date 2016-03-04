@@ -30,7 +30,7 @@ with open(sys.argv[2], 'w') as out:
     counter = -1  ### UNSTABLE SOLUTION, depends on list order
 
     # Loop for every log file found.
-    for file_name in file_list_bam:
+    for file_name in file_list_log:
         counter = counter + 1  ### UNSTABLE SOLUTION, see line 29 (counter)
 
         # Writes a header into the output containing the sample
