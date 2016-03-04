@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 
 import sys
-from operator import itemgetter
 
 # Parse arguments and get config data
 
