@@ -1,11 +1,11 @@
 #! /bin/bash -l                                                                                                                                                                                                                              
-#SBATCH -A g2015056                                                                                                                                                                                     
+#SBATCH -A b2012058
 #SBATCH -t 8:00:00                                                                                                                                                                                                                           
-#SBATCH -J star_mapping-S11
+#SBATCH -J bamtosam
 #SBATCH -p node -n 8
 #SBATCH -C thin                                                                                                                                                                                                                              
-#SBATCH -e /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/star_mapping/star_mapping_Mar_02err.txt
-#SBATCH -o /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/star_mapping/star_mapping_Mar_02_out.txt
+#SBATCH -e /proj/b2012058/nobackup/private/Exome_data/Whole_genome_sequuencing/scripts/info/samtobam_err.txt
+#SBATCH -o /proj/b2012058/nobackup/private/Exome_data/Whole_genome_sequuencing/scripts/infoout.txt
 #SBATCH --mail-type=All
 #SBATCH --mail-user=sailendra.pradhananga@scilifelab.se
 

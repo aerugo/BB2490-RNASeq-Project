@@ -4,8 +4,8 @@
 #SBATCH -J star_mapping-S12
 #SBATCH -p node -n 8
 #SBATCH -C thin                                                                                                                                                                                                                              
-#SBATCH -e /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/star_mapping/star_mapping_Mar_02err.txt
-#SBATCH -o /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/star_mapping/star_mapping_Mar_02_out.txt
+#SBATCH -e /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/star_mapping/star_mapping_SN12_Mar04_err.txt
+#SBATCH -o /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/star_mapping/star_mapping_SN12_Mar04_out.txt
 #SBATCH --mail-type=All
 #SBATCH --mail-user=sailendra.pradhananga@scilifelab.se
 
