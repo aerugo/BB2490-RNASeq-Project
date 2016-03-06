@@ -1,4 +1,5 @@
 #! /bin/bash -l                                                                                                                                                                                                                              
+<<<<<<< HEAD
 #SBATCH -A b2012058
 #SBATCH -t 8:00:00                                                                                                                                                                                                                           
 #SBATCH -J bamtosam
@@ -6,6 +7,15 @@
 #SBATCH -C thin                                                                                                                                                                                                                              
 #SBATCH -e /proj/b2012058/nobackup/private/Exome_data/Whole_genome_sequuencing/scripts/info/samtobam_err.txt
 #SBATCH -o /proj/b2012058/nobackup/private/Exome_data/Whole_genome_sequuencing/scripts/infoout.txt
+=======
+#SBATCH -A g2015056                                                                                                                                                                                     
+#SBATCH -t 12:00:00                                                                                                                                                                                                                          
+#SBATCH -J star_mapping-S11
+#SBATCH -p node -n 8
+#SBATCH -C thin                                                                                                                                                                                                                              
+#SBATCH -e /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/star_mapping/star_mapping_SN11_err.txt
+#SBATCH -o /proj/g2015056/BB2490/proj5_ASE/BB2490-RNASeq-Project/data/star_mapping/star_mapping_SN11_out.txt
+>>>>>>> 6b5a924bac281aefae3eb4fddbabcdb7889107fa
 #SBATCH --mail-type=All
 #SBATCH --mail-user=sailendra.pradhananga@scilifelab.se
 

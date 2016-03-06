@@ -1,16 +1,29 @@
 #! /bin/bash -l
 #SBATCH -A g2015056
+<<<<<<< HEAD
 #SBATCH -t 24:00:00
 #SBATCH -J trimall
 #SBATCH -p core -n 6
 #SBATCH -C thin
 #SBATCH -e /proj/g2015056/nobackup/Subsample/Htseq/HTseq_err.txt
 #SBATCH -o /proj/g2015056/nobackup/Subsample/Htseq/HTSeq_out.txt
+=======
+#SBATCH -t 40:00:00
+#SBATCH -J Count_reads
+#SBATCH -p core -n 4
+#SBATCH -C thin
+#SBATCH -e /proj/g2015056/nobackup/Subsample/Htseq/HTseq_errSN10.txt
+#SBATCH -o /proj/g2015056/nobackup/Subsample/Htseq/HTSeq_outSN10.txt
+>>>>>>> 6b5a924bac281aefae3eb4fddbabcdb7889107fa
 #SBATCH --mail-type=All
 #SBATCH --mail-user=sailendra.pradhananga@scilifelab.se
 
 
+<<<<<<< HEAD
 ## HTseqcount
+=======
+## Count reads in each features
+>>>>>>> 6b5a924bac281aefae3eb4fddbabcdb7889107fa
 
 module load bioinfo-tools
 module add htseq
@@ -25,8 +38,13 @@ cd ${input}
 for i in "${SAMPLES[@]}"; do
     for file in ${i}*"out.sam"; do
         echo $file
+<<<<<<< HEAD
         substring=${file:0:21}
         name=${substring}"_count.txt"
+=======
+        substring=${file:0:17}
+        name=${substring}"count.txt"
+>>>>>>> 6b5a924bac281aefae3eb4fddbabcdb7889107fa
         echo $name
         htseq-count -m intersection-strict -t exon -i gene_id ${file} /proj/g2015056/nobackup/Homo_sapiens.GRCh38.83.gtf > ${output}${name} &
     done
