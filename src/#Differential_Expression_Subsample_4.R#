@@ -13,7 +13,7 @@
 source("https://bioconductor.org/biocLite.R")
 biocLite("DESeq2")
 library("DESeq2")
-## Differential expression analysis for Sample S10 ##√ü
+## Differential expression analysis for Sample S10 ##Åﬂ
 
 setwd("~/BB2490-RNASeq-Project/data/Htseq")
 SN10_LPS_Subsample4 <- read.table("~/BB2490-RNASeq-Project/data/Htseq/SN10_LPS_Subsample4.txt", quote="\"", comment.char="")
@@ -167,7 +167,7 @@ S12_genes_sc <- as.character(sig_S12@rownames)
 
 ### Visualizing the common genes number identified in each of samples at different depth
 
-## Finding the common genes that are differntially expressed and havn√≠ng fold change>=1
+## Finding the common genes that are differntially expressed and havnÅÌng fold change>=1
 
 
 library(gplots)
