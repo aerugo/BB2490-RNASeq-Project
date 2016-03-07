@@ -1,16 +1,13 @@
 #! /bin/bash -l
 #SBATCH -A g2015056
-<<<<<<< HEAD
 #SBATCH -t 24:00:00
-#SBATCH -J trimall
+#SBATCH -J HTseq
 #SBATCH -p core -n 6
 #SBATCH -C thin
 #SBATCH -e /proj/g2015056/nobackup/Subsample/Htseq/HTseq_err.txt
 #SBATCH -o /proj/g2015056/nobackup/Subsample/Htseq/HTSeq_out.txt
 #SBATCH --mail-type=All
 #SBATCH --mail-user=sailendra.pradhananga@scilifelab.se
-
-
 
 ## HTseqcount
 ## Count reads in each features
