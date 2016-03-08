@@ -1,23 +1,17 @@
 #! /usr/bin/env python3
-
+import os
 import sys
+
 
 # Parse arguments and get config data
 
 
 def read_config():
-    s = open('config.ini', 'r').read()
+    s = open(os.path.join(__location__, './config.ini'), 'r').read()
     return eval(s)
 
 
-def parse_arguments():
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--cut", help="Difference in average number of reads between samples required to cluster.")
-    parser.add_argument("-d", "--directory", help="Directory containing bam to subsample")
-    parser.add_argument("-l", "--bam_list", help="Text file containing read counts for each bam file to be divided")
-    parser.add_argument("-o", "--output", help="Directory for output")
-    return parser.parse_args()
+# Clustering is calculated by first generating a dictionary of the bam files and then applying the algorithm
 
 
 def generate_bam_dict():
@@ -38,9 +32,9 @@ def generate_bam_dict():
                     file_name = str.split(line)[0]
                     read_count = int(float(str.split(line)[1]))
                     read_counts.append(read_count)
-                    file_list.append([file_name, read_count])
+                    file_list.append([file_name, read_count, sample])
                     bam_dict[sample]["file_list"].append([file_name, read_count])
-                    bam_dict[sample]["average_read_count"] = sum(read_counts)/len(read_counts)
+                    bam_dict[sample]["average_read_count"] = sum(read_counts) / len(read_counts)
                     bam_dict[sample]["lowest_read_count"] = min(read_counts)
                     bam_dict[sample]["highest_read_count"] = max(read_counts)
 
@@ -70,56 +64,40 @@ def calculate_clustering(bam_dict, cut):
 # Each tuple contains (filename, original read count, sub sample read count)
 
 
-def return_subsample_data():
+def return_subsample_data(smallest_cut):
     bam_dict, file_list = generate_bam_dict()
-    cut_list = calculate_clustering(bam_dict, 20)
+    cut_list = calculate_clustering(bam_dict, smallest_cut)
     subsample_data = []
 
-    for cut in cut_list:
+    output = open(os.path.join(__location__, './subsample_scheme.txt'), 'w')
+
+    for i, cut in enumerate(cut_list):
+        output.write("@" + "subsample_" + str(i+1) + "\n")
         subsample = []
         for file in file_list:
             if file[1] <= cut:
                 bam_file = [file[0], file[1], file[1]]
+                output.write(bam_file[0] + " " + str(bam_file[1]) + " " + str(bam_file[2]) + " " + str(file[2]) + "\n")
             else:
                 bam_file = [file[0], file[1], cut]
+                output.write(bam_file[0] + " " + str(bam_file[1]) + " " + str(bam_file[2]) + " " + str(file[2]) + "\n")
             subsample.append(bam_file)
         subsample_data.append(subsample)
 
-    return subsample_data
+    return True
 
 
 if __name__ == "__main__":
 
+    __location__ = os.path.realpath(
+        os.path.join(os.getcwd(), os.path.dirname(__file__)))
+
+    # Loading config
     CONFIG = read_config()
-    args = parse_arguments()
+    cut = int(CONFIG['cut'])
+    bam_list = str(os.path.join(__location__, CONFIG['bam_list']))
+    smallest_fraction = CONFIG['smallest_fraction']
 
-    # Testing config
-    bam_list = CONFIG['bam_list']
-
-    # Parsing arguments
-
-    # if args.cut is not None:
-    #     cut = args.cut
-    # else:
-    #     test_folder = CONFIG['cut']
-    #
-    # if args.directory is not None:
-    #     directory = args.directory
-    # else:
-    #     sys.stderr.write("Error: Must supply directory of bam files!")
-    #     sys.exit()
-    #
-    # if args.output is not None:
-    #     output = args.output
-    # else:
-    #     sys.stderr.write("Error: Must supply output directory!")
-    #     sys.exit()
-    #
-    # if args.bam_list is not None:
-    #     bam_list = args.bam_list
-    # else:
-    #     sys.stderr.write("Error: Must supply list of bam files and read counts!")
-    #     sys.exit()
-
-    data = return_subsample_data()
-    sys.stdout.write(str(data))
+    data = return_subsample_data(cut)
+    if data:
+        sys.stdout.write("success")
