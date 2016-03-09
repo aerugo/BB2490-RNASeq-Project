@@ -12,7 +12,8 @@ def read_config():
 
 
 # Clustering is calculated by first generating a dictionary of the bam files and then applying the algorithm
-# Don't worry about bam_dict - file_list is what we are using!
+# generate_bam_dict returns two collections.
+# Bam_dict used by calculate_clustering, file_list used by return_subsample_data.
 
 def generate_bam_dict():
     bam_dict = {}
@@ -41,7 +42,9 @@ def generate_bam_dict():
     return bam_dict, file_list
 
 
-def calculate_clustering(bam_dict, cut):
+# Calculates maximum read_count cut-off for each subsampling and outputs a list.
+
+def calculate_clustering(bam_dict, cut, fraction):
     cut *= 1000000
     tuples = []
     cut_list = []
@@ -50,6 +53,8 @@ def calculate_clustering(bam_dict, cut):
         tuples.append((k["average_read_count"], k["highest_read_count"]))
     tuples.sort(key=lambda tup: tup[0])
     last_average = tuples[0][0]
+    first_cut = float(fraction)*tuples[0][1]
+    cut_list.append(first_cut)  # First cut based on smallest_fraction in config file.
     for i in tuples:
         if i[0] - last_average > cut:
             cut_list.append(max_read_count)
@@ -61,12 +66,12 @@ def calculate_clustering(bam_dict, cut):
 
 # Outputs an array of arrays. Each array is a subsample scheme.
 # Each subsample scheme array contains one tuple per bam file.
-# Each tuple contains (filename, original read count, sub sample read count)
+# Each tuple contains (filename, original read count, sub sample read count, sample name)
+# Writes subsample scheme to a file which is read downstream in bash script.
 
-
-def return_subsample_data(smallest_cut):
+def return_subsample_data(cut_input, fraction_of_smallest_cut):
     bam_dict, file_list = generate_bam_dict()
-    cut_list = calculate_clustering(bam_dict, smallest_cut)
+    cut_list = calculate_clustering(bam_dict, cut_input, fraction_of_smallest_cut)
     subsample_data = []
 
     output = open(os.path.join(__location__, './subsample_scheme.txt'), 'w')
@@ -94,10 +99,10 @@ if __name__ == "__main__":
 
     # Loading config
     CONFIG = read_config()
-    cut = int(CONFIG['cut'])
+    smallest_cut = int(CONFIG['cut'])
     bam_list = str(os.path.join(__location__, CONFIG['bam_list']))
     smallest_fraction = CONFIG['smallest_fraction']
 
-    data = return_subsample_data(cut)
+    data = return_subsample_data(smallest_cut, smallest_fraction)
     if data:
         sys.stdout.write("success")
