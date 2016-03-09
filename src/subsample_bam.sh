@@ -29,6 +29,8 @@ then
             List ) less -FX subsample_scheme.txt; echo; echo "Do you want to generate subsample files? Choose list to see overview." ;;
         esac
     done
+else
+    exit
 fi
 
 now=$(date +"%m_%d_%Y")
@@ -50,7 +52,7 @@ while read p; do
         echo "ln -s ${input}/infile.bam > ${output_subsample}/outfile.bam"
     else
         fraction=$(bc <<< "scale=4;$sample_count/$original_count")
-        echo "samtools view -b -s ${fraction} ${input}/infile.bam > ${output_subsample}/outfile.bam"
+        echo "samtools view -b -s 0${fraction} ${input}/infile.bam > ${output_subsample}/outfile.bam"
     fi
   fi
 done <subsample_scheme.txt

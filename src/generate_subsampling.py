@@ -12,7 +12,7 @@ def read_config():
 
 
 # Clustering is calculated by first generating a dictionary of the bam files and then applying the algorithm
-
+# Don't worry about bam_dict - file_list is what we are using!
 
 def generate_bam_dict():
     bam_dict = {}
