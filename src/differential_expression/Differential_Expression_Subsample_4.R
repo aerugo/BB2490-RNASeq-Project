@@ -193,3 +193,72 @@ venn.plot<-venn.diagram(x = list(SN10=S10_genes_sc,
                         cat.col = c("darkblue", "darkgreen", "orange"),
                         cat.cex = 1.0)
 
+
+
+##########################################################################################
+
+## testing Bioligical replicates and technical replicates in each of the above analysis
+library("DESeq2")
+
+##########################################################
+LPS_Subsample4 <- read.table("~/BB2490-RNASeq-Project/data/Htseq/LPS_treated_sample2.txt", quote="\"", comment.char="")
+UNST_Subsample4 <- read.table("~/BB2490-RNASeq-Project/data/Htseq/Unst_sample2.txt", quote="\"", comment.char="")
+
+
+colnames (UNST_Subsample4) <- c("Gene_features", "UNST_Lane_1.1", "UNST_Lane_1.2", "UNST_Lane_2.1", "UNST_Lane_2.2", "UNST_Lane_3.1", "UNST_Lane_3.2")
+colnames (LPS_Subsample4) <- c("Gene_features", "LPS_Lane_1.1", "LPS_Lane_1.2", "LPS_Lane_2.1", "LPS_Lane_2.2", "LPS_Lane_3.1", "LPS_Lane_3.2") 
+data_SN10 <- merge (LPS_Subsample4, UNST_Subsample4, by.y ="Gene_features" )
+## Considering each lanes as technical replicates and hence given names based on lane numbers
+
+N = dim(data_SN10)[1]
+rownames(data_SN10) = data_SN10[,1]
+data_SN10 = data_SN10[,-1]
+data_SN10= data_SN10[c(6:N),]
+## removing last 5 rows which in our case turn out be in top 5 rows
+data_SN10 <- data_SN10[ rowSums(data_SN10) > 1, ] 
+## Filtering to reduce number of genes that have 0 count values
+## 29585
+
+colData <- DataFrame(condition=factor(c("LPS", "LPS", "LPS", "LPS","LPS", "LPS", "UNST", "UNST", "UNST", "UNST","UNST", "UNST")))
+dds <- DESeqDataSetFromMatrix(data_SN10, colData, formula(~ condition))
+dds <- DESeq(dds)
+# plotMA(dds, main="Differential Gene Expression in Sample S10 at Subsample 100% data")
+
+
+pdf("../../results/MA_Plot_SN10_SB4.pdf", height=8, width=12)
+plotMA(dds, main="Differential Gene Expression in Sample S10 at Subsample 100% data")
+dev.off()
+## The MA plot kinda of supports the argument of large number of genes differential expressed between two condition
+
+res <- results(dds)
+res_clean <- res[(!is.na(res$padj)) &
+                   (res$padj != 0.000000e+00), ]
+## I did this filtering to remove genes with 0 padjusted values
+## May be it would be interesting to see why there is padjusted to 0
+
+resOrdered <- res_clean[order(res_clean$padj),]
+head(resOrdered)
+sig <- resOrdered[resOrdered$padj<0.05 &
+                    abs(resOrdered$log2FoldChange)>=1,]
+## This gave us 1804 genes that are differential expressed with the above 
+## criteria.
+## Defning the criteria for the genes which are significant as ones
+## with the Padjusted values lesser than 5% FDR and havin log2Fold change
+## greater than 1. It would be interesting to see what happens with different
+## cutoff. The above results ga
+
+summary(res_clean)
+#2459 genes upregulated and 2827 genes downregulated
+#2334 genes upregulated and 2737 genes downregulated in second analysis 
+sum(res_clean$padj < 0.1, na.rm=TRUE)
+## 5286 genes are differentially expressed at 10% FDR
+
+sum(res_clean$padj < 0.05, na.rm=TRUE)
+##  4518 genes are differentially expressed at 1% FDR
+
+S10_genes_sc <- as.character(sig@rownames)
+S10_genes_sc2 <- as.character(sig@rownames)
+
+Common_genes<- Reduce(intersect,  list(S10_genes_sc2,S10_genes_sc))
+
+library(geoseq)

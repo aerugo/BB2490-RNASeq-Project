@@ -167,7 +167,7 @@ S12_genes_ss1 <- as.character(sig_S12_SS1@rownames)
 
 ####################################################################################################################
 ####################################################################################################################
-## Differential expression analysis for biological replicates Sample S12 ##
+## Differential expression analysis for biological replicates Sample ##
 
 Treated_Subsample <- read.table("~/BB2490-RNASeq-Project/data/count/Htseq/Subsample_1/LPS_SS1.txt", quote="\"", comment.char="")
 Untreated_Subsample <- read.table("~/BB2490-RNASeq-Project/data/count/Htseq/Subsample_1/UNST_SS1.txt", quote="\"", comment.char="")
@@ -224,6 +224,172 @@ sum(res_clean$padj < 0.05, na.rm=TRUE)
 
 genes_BR <- as.character(sig@rownames)
 
+write.table(as.data.frame(resOrdered[resOrdered$padj<0.05,]),
+            "~/BB2490-RNASeq-Project/results/Differential_Expression_SS1.tsv",
+            sep="\t", quote =F)
+
+####################################################################################
+# Gene Ontology based study on the differential expressed genes for biological replicates 
+
+install.packages("plyr")
+library(plyr)
+
+
+source("https://bioconductor.org/biocLite.R")
+biocLite("genefilter")
+library(genefilter)
+
+source("http://bioconductor.org/biocLite.R")
+biocLite("GO.db")
+biocLite("topGO")
+biocLite("GOstats")
+
+library(org.Hs.eg.db)
+library("AnnotationDbi")
+library("topGO")
+columns(org.Hs.eg.db)
+
+### Gene set enrichment analysis for all the genes 
+res_clean$symbol = mapIds(org.Hs.eg.db,
+                          keys=row.names(res_clean), 
+                          column="SYMBOL",
+                          keytype="ENSEMBL",
+                          multiVals="first")
+res_clean$entrez = mapIds(org.Hs.eg.db,
+                          keys=row.names(res_clean), 
+                          column="ENTREZID",
+                          keytype="ENSEMBL",
+                          multiVals="first")
+res_clean$name =   mapIds(org.Hs.eg.db,
+                          keys=row.names(res_clean), 
+                          column="GENENAME",
+                          keytype="ENSEMBL",
+                          multiVals="first")
+head(res_clean, 10)
+source("https://bioconductor.org/biocLite.R")
+biocLite("gage")
+
+source("https://bioconductor.org/biocLite.R")
+biocLite("pathview")
+
+source("https://bioconductor.org/biocLite.R")
+biocLite("gageData")
+
+library(pathview)
+library(gage)
+library(gageData)
+
+data(go.sets.hs)
+data(go.subs.hs)
+lapply(go.subs.hs, head)
+
+foldchanges = res_clean$log2FoldChange
+names(foldchanges) = res_clean$entrez
+head(foldchanges)
+
+gobpsets = go.sets.hs[go.subs.hs$BP]  ## Biological function 
+gobpres = gage(foldchanges, gsets=gobpsets, same.dir=TRUE)
+lapply(gobpres, head , n=5)
+
+gobpsets = go.sets.hs[go.subs.hs$CC]  ## Cellular function
+gobpres = gage(foldchanges, gsets=gobpsets, same.dir=TRUE)
+lapply(gobpres, head , n=5)
+
+gobpsets = go.sets.hs[go.subs.hs$MF]  ##Molecular function 
+gobpres = gage(foldchanges, gsets=gobpsets, same.dir=TRUE)
+lapply(gobpres, head , n=5)
+
+######################################################################################
+######################################################################################
+### Gene ontology enrichment analysis for DEG genes 
+
+Genes_Subsample1 <- resOrdered[resOrdered$padj<0.05,]
+
+Genes_Subsample1$symbol = mapIds(org.Hs.eg.db,
+                          keys=row.names(Genes_Subsample1), 
+                          column="SYMBOL",
+                          keytype="ENSEMBL",
+                          multiVals="first")
+
+Genes_Subsample1$entrez = mapIds(org.Hs.eg.db,
+                          keys=row.names(Genes_Subsample1), 
+                          column="ENTREZID",
+                          keytype="ENSEMBL",
+                          multiVals="first")
+
+Genes_Subsample1$name =   mapIds(org.Hs.eg.db,
+                          keys=row.names(Genes_Subsample1), 
+                          column="GENENAME",
+                          keytype="ENSEMBL",
+                          multiVals="first")
+
+Genes_Subsample1$GO =   mapIds(org.Hs.eg.db,
+                        keys=row.names(Genes_Subsample1), 
+                        column="GO",
+                        keytype="ENSEMBL",
+                        multiVals="first")
+head(Genes_Subsample1, 10)
+
+
+overallBaseMean <- as.matrix(resOrdered[, "baseMean", drop = F])
+backG <- genefinder(overallBaseMean, Genes_Subsample1@rownames, 10, method = "manhattan")
+backG <- rownames(overallBaseMean)[as.vector(sapply(backG, function(x)x$indices))]
+backG <- setdiff(backG, Genes_Subsample1@rownames)
+length(backG)
+
+all= log2(resOrdered[,"baseMean"]) 
+foreground =log2(resOrdered[Genes_Subsample1@rownames, "baseMean"])
+background =log2(resOrdered[backG, "baseMean"])
+  
+plot.multi.dens <- function(s)
+{
+  junk.x = NULL
+  junk.y = NULL
+  for(i in 1:length(s))
+  {
+    junk.x = c(junk.x, density(s[[i]])$x)
+    junk.y = c(junk.y, density(s[[i]])$y)
+  }
+  xr <- range(junk.x)
+  yr <- range(junk.y)
+  plot(density(s[[1]]), xlim = xr, ylim = yr, main = "")
+  for(i in 1:length(s))
+  {
+    lines(density(s[[i]]), xlim = xr, ylim = yr, col = i)
+  }
+}
+plot.multi.dens(list(all, foreground,background))
+
+
+onts = c( "MF", "BP", "CC" )
+geneIDs = rownames(overallBaseMean)
+inUniverse = geneIDs %in% c(Genes_Subsample1@rownames,  backG)
+inSelection =  geneIDs %in% Genes_Subsample1@rownames 
+alg <- factor( as.integer( inSelection[inUniverse] ) )
+names(alg) <- geneIDs[inUniverse]
+
+tab = as.list(onts)
+names(tab) = onts
+
+for(i in 1:3){
+  
+  ## prepare data
+  tgd <- new( "topGOdata", ontology=onts[i], allGenes = alg, nodeSize=5,
+              annot=annFUN.org, mapping="org.Hs.eg.db", ID = "ensembl" )
+  
+  ## run tests
+  resultTopGO.elim <- runTest(tgd, algorithm = "elim", statistic = "Fisher" )
+  resultTopGO.classic <- runTest(tgd, algorithm = "classic", statistic = "Fisher" )
+  
+  ## look at results
+  tab[[i]] <- GenTable( tgd, Fisher.elim = resultTopGO.elim, 
+                        Fisher.classic = resultTopGO.classic,
+                        orderBy = "Fisher.classic" , topNodes = 5)
+  
+}
+
+topGOResults <- rbind.fill(tab)
+write.csv(topGOResults, file = "topGOResults_SS1.csv")
 
 
 #####################################
@@ -238,3 +404,4 @@ test <- Reduce(intersect, list(Common_genes,
 
 #############################################################################################################
 
+############################################################################################################

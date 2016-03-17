@@ -188,8 +188,12 @@ sum(res_clean_SS3$padj < 0.05, na.rm=TRUE)
 
 genes_BR_SS3 <- as.character(sig_SS3@rownames)
 
+write.table(as.data.frame(resOrdered_SS3[resOrdered_SS3$padj<0.05,]),
+            "~/BB2490-RNASeq-Project/results/Differential_Expression_SS3.tsv",
+            sep="\t", quote =F)
 
-##
+
+########
 library(gplots)
 library(VennDiagram)
 Common_genes_SS3<- Reduce(intersect,  list(S10_genes_ss2, 
@@ -198,3 +202,258 @@ Common_genes_SS3<- Reduce(intersect,  list(S10_genes_ss2,
 
 test_2 <- Reduce(intersect, list(Common_genes_SS2,
                                  genes_BR_SS2))
+
+
+annots <- select(org.Hs.eg.db, keys=rownames(sig_SS3),
+                 columns=c("SYMBOL","GENENAME"), keytype="ENSEMBL")
+resultTable <- merge(sig_SS3, annots, by.x=0, by.y="ENSEMBL")
+head(resultTable)
+
+
+####################################################################
+## Gene Ontology analysis for the subsample -3
+
+source("http://bioconductor.org/biocLite.R")
+biocLite("GO.db")
+biocLite("topGO")
+biocLite("GOstats")
+library(org.Hs.eg.db)
+library("AnnotationDbi")
+columns(org.Hs.eg.db)
+res_clean_SS3$symbol = mapIds(org.Hs.eg.db,
+                              keys=row.names(res_clean_SS3), 
+                              column="SYMBOL",
+                              keytype="ENSEMBL",
+                              multiVals="first")
+res_clean_SS3$entrez = mapIds(org.Hs.eg.db,
+                              keys=row.names(res_clean_SS3), 
+                              column="ENTREZID",
+                              keytype="ENSEMBL",
+                              multiVals="first")
+res_clean_SS3$name =   mapIds(org.Hs.eg.db,
+                              keys=row.names(res_clean_SS3), 
+                              column="GENENAME",
+                              keytype="ENSEMBL",
+                              multiVals="first")
+head(res_clean_SS3, 10)
+
+
+source("https://bioconductor.org/biocLite.R")
+biocLite("gage")
+
+source("https://bioconductor.org/biocLite.R")
+biocLite("pathview")
+
+source("https://bioconductor.org/biocLite.R")
+biocLite("gageData")
+
+library(pathview)
+library(gage)
+library(gageData)
+
+data(go.sets.hs)
+data(go.subs.hs)
+lapply(go.subs.hs, head)
+
+foldchanges = res_clean_SS3$log2FoldChange
+names(foldchanges) = res_clean_SS3$entrez
+head(foldchanges)
+
+gobpsets = go.sets.hs[go.subs.hs$BP]  ## Biological function 
+gobpres = gage(foldchanges, gsets=gobpsets, same.dir=TRUE)
+lapply(gobpres, head , n=5)
+
+gobpsets = go.sets.hs[go.subs.hs$CC]  ## Biological function 
+gobpres = gage(foldchanges, gsets=gobpsets, same.dir=TRUE)
+lapply(gobpres, head , n=5)
+
+gobpsets = go.sets.hs[go.subs.hs$MF]  ## Biological function 
+gobpres = gage(foldchanges, gsets=gobpsets, same.dir=TRUE)
+lapply(gobpres, head , n=5)
+
+
+
+
+res_SS3$symbol = mapIds(org.Hs.eg.db,
+                              keys=row.names(res_SS3), 
+                              column="SYMBOL",
+                              keytype="ENSEMBL",
+                              multiVals="first")
+res_SS3$entrez = mapIds(org.Hs.eg.db,
+                              keys=row.names(res_SS3), 
+                              column="ENTREZID",
+                              keytype="ENSEMBL",
+                              multiVals="first")
+res_SS3$name =   mapIds(org.Hs.eg.db,
+                              keys=row.names(res_SS3), 
+                              column="GENENAME",
+                              keytype="ENSEMBL",
+                              multiVals="first")
+
+data(go.sets.hs)
+data(go.subs.hs)
+lapply(go.subs.hs, head)
+
+foldchanges = res_SS3$log2FoldChange
+names(foldchanges) = res_SS3$entrez
+head(foldchanges)
+
+gobpsets = go.sets.hs[go.subs.hs$BP]  ## Biological function 
+gobpres = gage(foldchanges, gsets=gobpsets, same.dir=TRUE)
+lapply(gobpres, head , n=10)
+
+
+
+## Gene Ontology analysis for the subsample -2
+
+source("http://bioconductor.org/biocLite.R")
+biocLite("GO.db")
+biocLite("topGO")
+biocLite("GOstats")
+library(org.Hs.eg.db)
+library("AnnotationDbi")
+columns(org.Hs.eg.db)
+res_clean_SS2$symbol = mapIds(org.Hs.eg.db,
+                              keys=row.names(res_clean_SS2), 
+                              column="SYMBOL",
+                              keytype="ENSEMBL",
+                              multiVals="first")
+res_clean_SS2$entrez = mapIds(org.Hs.eg.db,
+                              keys=row.names(res_clean_SS2), 
+                              column="ENTREZID",
+                              keytype="ENSEMBL",
+                              multiVals="first")
+res_clean_SS2$name =   mapIds(org.Hs.eg.db,
+                              keys=row.names(res_clean_SS2), 
+                              column="GENENAME",
+                              keytype="ENSEMBL",
+                              multiVals="first")
+head(res_clean_SS2, 10)
+
+
+source("https://bioconductor.org/biocLite.R")
+biocLite("gage")
+
+source("https://bioconductor.org/biocLite.R")
+biocLite("pathview")
+
+source("https://bioconductor.org/biocLite.R")
+biocLite("gageData")
+
+library(pathview)
+library(gage)
+library(gageData)
+
+data(go.sets.hs)
+data(go.subs.hs)
+lapply(go.subs.hs, head)
+
+foldchanges = res_clean_SS2$log2FoldChange
+names(foldchanges) = res_clean_SS2$entrez
+head(foldchanges)
+
+gobpsets = go.sets.hs[go.subs.hs$BP]  ## Biological function 
+gobpres = gage(foldchanges, gsets=gobpsets, same.dir=TRUE)
+lapply(gobpres, head , n=5)
+
+
+gobpsets = go.sets.hs[go.subs.hs$CC]  ## Cellular functions 
+gobpres = gage(foldchanges, gsets=gobpsets, same.dir=TRUE)
+lapply(gobpres, head , n=5)
+
+
+
+gobpsets = go.sets.hs[go.subs.hs$MF]  ## Molecular  functions 
+gobpres = gage(foldchanges, gsets=gobpsets, same.dir=TRUE)
+lapply(gobpres, head , n=5)
+
+
+###############################################################################################################
+### Gene ontology enrichment analysis for DEG genes 
+
+Genes_Subsample3 <- resOrdered_SS3[resOrdered_SS3$padj<0.05,]
+
+Genes_Subsample3$symbol = mapIds(org.Hs.eg.db,
+                                 keys=row.names(Genes_Subsample3), 
+                                 column="SYMBOL",
+                                 keytype="ENSEMBL",
+                                 multiVals="first")
+
+Genes_Subsample3$entrez = mapIds(org.Hs.eg.db,
+                                 keys=row.names(Genes_Subsample3), 
+                                 column="ENTREZID",
+                                 keytype="ENSEMBL",
+                                 multiVals="first")
+
+Genes_Subsample3$name =   mapIds(org.Hs.eg.db,
+                                 keys=row.names(Genes_Subsample3), 
+                                 column="GENENAME",
+                                 keytype="ENSEMBL",
+                                 multiVals="first")
+
+Genes_Subsample3$GO =   mapIds(org.Hs.eg.db,
+                               keys=row.names(Genes_Subsample3), 
+                               column="GO",
+                               keytype="ENSEMBL",
+                               multiVals="first")
+head(Genes_Subsample3, 10)
+
+
+overallBaseMean <- as.matrix(resOrdered_SS3[, "baseMean", drop = F])
+backG <- genefinder(overallBaseMean, Genes_Subsample3@rownames, 10, method = "manhattan")
+backG <- rownames(overallBaseMean)[as.vector(sapply(backG, function(x)x$indices))]
+backG <- setdiff(backG, Genes_Subsample3@rownames)
+length(backG)
+
+all= log2(resOrdered_SS3[,"baseMean"]) 
+foreground =log2(resOrdered_SS3[Genes_Subsample3@rownames, "baseMean"])
+background =log2(resOrdered_SS3[backG, "baseMean"])
+
+plot.multi.dens <- function(s)
+{
+  junk.x = NULL
+  junk.y = NULL
+  for(i in 1:length(s))
+  {
+    junk.x = c(junk.x, density(s[[i]])$x)
+    junk.y = c(junk.y, density(s[[i]])$y)
+  }
+  xr <- range(junk.x)
+  yr <- range(junk.y)
+  plot(density(s[[1]]), xlim = xr, ylim = yr, main = "")
+  for(i in 1:length(s))
+  {
+    lines(density(s[[i]]), xlim = xr, ylim = yr, col = i)
+  }
+}
+plot.multi.dens(list(all, foreground,background))
+
+
+onts = c( "MF", "BP", "CC" )
+geneIDs = rownames(overallBaseMean)
+inUniverse = geneIDs %in% c(Genes_Subsample3@rownames,  backG)
+inSelection =  geneIDs %in% Genes_Subsample3@rownames 
+alg <- factor( as.integer( inSelection[inUniverse] ) )
+names(alg) <- geneIDs[inUniverse]
+tab = as.list(onts)
+names(tab) = onts
+
+for(i in 1:3){
+  
+  ## prepare data
+  tgd <- new( "topGOdata", ontology=onts[i], allGenes = alg, nodeSize=5,
+              annot=annFUN.org, mapping="org.Hs.eg.db", ID = "ensembl" )
+  
+  ## run tests
+  resultTopGO.elim <- runTest(tgd, algorithm = "elim", statistic = "Fisher" )
+  resultTopGO.classic <- runTest(tgd, algorithm = "classic", statistic = "Fisher" )
+  
+  ## look at results
+  tab[[i]] <- GenTable( tgd, Fisher.elim = resultTopGO.elim, 
+                        Fisher.classic = resultTopGO.classic,
+                        orderBy = "Fisher.classic" , topNodes = 5)
+  
+}
+
+topGOResults <- rbind.fill(tab)
+write.csv(topGOResults, file = "topGOResults_SS23.csv")
